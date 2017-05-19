@@ -20,8 +20,8 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :list_id %><br>
-    <%= f.number_field :list_id %>
+    <%= "Choose list: " %> 
+    <%= f.collection_select(:list_id, List.all, :id, :title) %>
   </div>
   <div class="actions">
     <%= f.submit %>
