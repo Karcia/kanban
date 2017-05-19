@@ -4,6 +4,7 @@ class ListsController < ApplicationController
 
   def index
     @lists = List.all
+    @cards = Card.all
   end
 
   def show
@@ -56,6 +57,6 @@ class ListsController < ApplicationController
     end
 
     def list_params
-      params.require(:list).permit(:title, :description, :user_id, :project_id)
+      params.require(:list).permit(:title, :description, :user_id, :project_id, cards_attributes: [:id, :title, :description])
     end
 end

@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-List.create(title: 'To do', description: "numer 1")
-List.create(title: 'In progress', description: "numer 2")
-List.create(title: 'Done', description: "numer 3")
+Project.create(title: 'testowy project')
+List.create(title: 'To do', description: "numer 1", user_id: 1, project_id: 1)
+List.create(title: 'In progress', description: "numer 2", user_id: 1, project_id: 1)
+List.create(title: 'Done', description: "numer 3", user_id: 1, project_id: 1)
+User.create(email: 'example@example.com', password: 'haslo123')
