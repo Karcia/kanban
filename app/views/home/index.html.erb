@@ -1,2 +1,10 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<% if user_signed_in? %>
+<% else %>
+  <div class="panel panel-default">
+    <h2 style="text-align: center"t>KANBAN APPLICATION</h2>
+    <div class="panel-body">
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem."<br>
+    </div>
+    <div class="panel-footer"><div style="text-align: center"><%= link_to "Sign up", new_user_registration_path, class: "btn btn-success btn-lg active" %></div><br><div style="text-align: center"><%= link_to "Sign in", new_user_session_path %></div> 
+  </div>
+<% end %>
