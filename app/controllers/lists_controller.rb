@@ -1,25 +1,19 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_list, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
 
-  def index
-    @lists = List.all
-    @cards = Card.all
-    @projects = Project.all
-  end
-
-  def show
-  end
-
   def new
-    @list = current_user.lists.build
+    @project = Project.find(params[:project_id])
+    @list = @project.lists.build
   end
 
   def edit
+    @project = Project.find(params[:project_id])
   end
 
   def create
-    @list = current_user.lists.build(list_params)
+    @project = Project.find(params[:project_id])
+    @list = @project.lists.build(list_params)
     if @list.save
       redirect_to project_path(@list.project.id), alert: 'List was successfully created.'
     else
@@ -46,6 +40,6 @@ class ListsController < ApplicationController
     end
 
     def list_params
-      params.require(:list).permit(:title, :description, :user_id, :project_id, :card_id, :card_title, :card_description)
+      params.require(:list).permit(:title, :description)
     end
 end
