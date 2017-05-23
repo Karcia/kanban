@@ -6,6 +6,6 @@
     <%= card.description %>
   </div>
   <div style= "text-align: right">
-    <%= link_to 'x', card, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'x', project_list_card_path(project_id: card.list.project.id, list_id: card.list.id, id: card.id), method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
 </div>

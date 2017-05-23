@@ -12,10 +12,10 @@
     <%= render 'cards/index', cards: list.cards  %>
 
     <div class="panel-footer">
-      <%= link_to 'Add card', new_card_path %>
-      <%= link_to 'Show', list %>
-      <%= link_to 'Edit', edit_list_path(list) %>
-      <%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Add card', new_project_list_card_path(project_id: list.project.id, list_id: list.id) %>
+      <%= link_to 'Show', project_list_path(project_id: list.project.id, id: list.id) %>
+      <%= link_to 'Edit', edit_project_list_path(project_id: list.project.id, id: list.id) %>
+      <%= link_to 'Destroy', project_list_path(project_id: list.project.id, id: list.id), method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
   </div>
 </div>

@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  resources :projects
-  resources :cards
-  resources :lists
   devise_for :users
 
   authenticated :user do
@@ -11,10 +8,9 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :projects do
-    resources :lists
+    resources :lists do
+      resources :cards
+    end
   end
 
-  resources :lists do
-    resources :cards
-  end
 end

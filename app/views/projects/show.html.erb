@@ -7,6 +7,6 @@
     </div>
 
     <%# lists przekazywane do partiala jako zmienna lokalna(bez malpy) %>
-    <%= render 'lists/index', lists: @project.lists %>
+    <%= render 'lists/index', project: @project, lists: @project.lists %>
   </div>
 </div>

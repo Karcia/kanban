@@ -13,11 +13,6 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li>
-            <%= link_to new_list_path, title: "Add new list" do %>
-              <span class="glyphicon glyphicon-plus"></span>
-            <% end %>
-          </li>
           <li><%= link_to "Edit profile", edit_user_registration_path %></li>
           <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
         <% else %>
