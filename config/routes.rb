@@ -5,9 +5,16 @@ Rails.application.routes.draw do
   devise_for :users
 
   authenticated :user do
-    root to: 'lists#index', as: :authenticated_root
+    root to: 'projects#index', as: :authenticated_root
   end
 
   root 'home#index'
 
+  resources :projects do
+    resources :lists
+  end
+
+  resources :lists do
+    resources :cards
+  end
 end

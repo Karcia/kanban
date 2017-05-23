@@ -1,3 +1,31 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.row {
+  padding-left: 30px;
+  padding-right: 15px;
+}
+
+.project-container.col-lg-4 {
+  height: 115px;
+  width: 310px;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  margin-right: 39px;
+  background-color: #CCFF99;
+}
+
+.new-project-container.col-lg-4 {
+  height: 115px;
+  width: 310px;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  margin-right: 39px;
+  background-color: #C0C0C0;
+  margin-top: 50px;
+}
+
+.project-title {
+  font-color: black;
+}

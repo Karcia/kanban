@@ -5,6 +5,7 @@ class ListsController < ApplicationController
   def index
     @lists = List.all
     @cards = Card.all
+    @projects = Project.all
   end
 
   def show
@@ -19,36 +20,24 @@ class ListsController < ApplicationController
 
   def create
     @list = current_user.lists.build(list_params)
-
-    respond_to do |format|
-      if @list.save
-        format.html { redirect_to @list, alert: 'List was successfully created.' }
-        format.json { render :show, status: :created, location: @list }
-      else
-        format.html { render :new }
-        format.json { render json: @list.errors, status: :unprocessable_entity }
-      end
+    if @list.save
+      redirect_to project_path(@list.project.id), alert: 'List was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @list.update(list_params)
-        format.html { redirect_to @list, alert: 'List was successfully updated.' }
-        format.json { render :show, status: :ok, location: @list }
-      else
-        format.html { render :edit }
-        format.json { render json: @list.errors, status: :unprocessable_entity }
-      end
+    if @list.update(list_params)
+      redirect_to project_path(@list.project.id), alert: 'List was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @list.destroy
-    respond_to do |format|
-      format.html { redirect_to lists_url, alert: 'List was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to project_path(@list.project.id), alert: 'List was successfully destroyed.'
   end
 
   private
@@ -57,6 +46,6 @@ class ListsController < ApplicationController
     end
 
     def list_params
-      params.require(:list).permit(:title, :description, :user_id, :project_id, cards_attributes: [:id, :title, :description])
+      params.require(:list).permit(:title, :description, :user_id, :project_id, :card_id, :card_title, :card_description)
     end
 end

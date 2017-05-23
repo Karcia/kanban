@@ -1,0 +1,10 @@
+<div class="lists-container">
+  <div class="row">
+    <% lists.each do |list| %>
+      <%= render 'lists/show', list: list %>
+    <% end %>
+  </div>
+  <div class="panel-footer">
+    <%= link_to 'New List', new_list_path %>
+  </div>
+</div>

@@ -1,9 +1,12 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="row">
+    <div class="panel-heading">
+      <h1>
+        <%= @project.try(:title) %>
+      </h1>
+    </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+    <%# lists przekazywane do partiala jako zmienna lokalna(bez malpy) %>
+    <%= render 'lists/index', lists: @project.lists %>
+  </div>
+</div>

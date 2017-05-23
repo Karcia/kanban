@@ -17,36 +17,24 @@ class CardsController < ApplicationController
 
   def create
     @card = Card.new(card_params)
-
-    respond_to do |format|
-      if @card.save
-        format.html { redirect_to root_path, alert: 'Card was successfully created.' }
-        format.json { render :show, status: :created, location: @card }
-      else
-        format.html { render :new }
-        format.json { render json: @card.errors, status: :unprocessable_entity }
-      end
+    if @card.save
+      redirect_to project_path(id: @card.list.project.id), alert: 'Card was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @card.update(card_params)
-        format.html { redirect_to root_path, alert: 'Card was successfully updated.' }
-        format.json { render :show, status: :ok, location: @card }
-      else
-        format.html { render :edit }
-        format.json { render json: @card.errors, status: :unprocessable_entity }
-      end
+    if @card.update(card_params)
+      redirect_to :back, alert: 'Card was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @card.destroy
-    respond_to do |format|
-      format.html { redirect_to root_path, alert: 'Card was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to :back, alert: 'Card was successfully destroyed.'
   end
 
   private
