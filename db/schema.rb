@@ -28,12 +28,10 @@ ActiveRecord::Schema.define(version: 20170519155048) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "user_id"
     t.integer  "project_id"
   end
 
   add_index "lists", ["project_id"], name: "index_lists_on_project_id"
-  add_index "lists", ["user_id"], name: "index_lists_on_user_id"
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"
