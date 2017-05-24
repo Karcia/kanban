@@ -1,4 +1,4 @@
-<%= form_for(@card) do |f| %>
+<%= form_for [@project, @list, @card] do |f| %>
   <% if @card.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@card.errors.count, "error") %> prohibited this card from being saved:</h2>
@@ -18,10 +18,6 @@
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= "Choose list: " %>
-    <%= f.collection_select(:list_id, List.all, :id, :title) %>
   </div>
   <div class="actions">
     <%= f.submit %>

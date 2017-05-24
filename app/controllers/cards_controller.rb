@@ -9,14 +9,18 @@ class CardsController < ApplicationController
   end
 
   def new
-    @card = Card.new
+    @project = Project.find(params[:project_id])
+    @list = List.find(params[:list_id])
+    @card = @list.cards.build
   end
 
   def edit
   end
 
   def create
-    @card = Card.new(card_params)
+    @project = Project.find(params[:project_id])
+    @list = List.find(params[:list_id])
+    @card = @list.cards.build(card_params)
     if @card.save
       redirect_to project_path(id: @card.list.project.id), alert: 'Card was successfully created.'
     else
@@ -26,7 +30,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      redirect_to :back, alert: 'Card was successfully updated.'
+      redirect_to project_path(id: @card.list.project.id), alert: 'Card was successfully updated.'
     else
       render :edit
     end
@@ -34,7 +38,7 @@ class CardsController < ApplicationController
 
   def destroy
     @card.destroy
-    redirect_to :back, alert: 'Card was successfully destroyed.'
+    redirect_to project_path(id: @card.list.project.id), alert: 'Card was successfully destroyed.'
   end
 
   private
