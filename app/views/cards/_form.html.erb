@@ -1,25 +1,35 @@
-<%= form_for [@project, @list, @card] do |f| %>
-  <% if @card.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@card.errors.count, "error") %> prohibited this card from being saved:</h2>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Create card</h2>
+  </div>
+  <div class="row">
+    <%= form_for [@project, @list, @card] do |f| %>
+      <% if @card.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@card.errors.count, "error") %> prohibited this card from being saved:</h2>
 
-      <ul>
-      <% @card.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @card.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+      <div class="form-group">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :description %><br>
+        <%= f.text_area :description, class:"form-control" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Create card", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+  <div class="panel-footer">
+    <%= link_to 'Back', project_path(id: @project.id) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

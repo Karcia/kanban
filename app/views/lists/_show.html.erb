@@ -2,7 +2,7 @@
   <div class="panel panel-default">
     <div class="panel-heading list">
       <h4>
-        <%= list.title %>
+        <%= link_to list.title, edit_project_list_path(project_id: list.project.id, id: list.id) %>
       </h4>
     </div>
     <div class="descr">
@@ -11,10 +11,11 @@
 
     <%= render 'cards/index', cards: list.cards  %>
 
+    <div style= "text-align: right">
+      <%= link_to 'x', project_list_path(project_id: list.project.id, id: list.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
     <div class="panel-footer">
       <%= link_to 'Add card', new_project_list_card_path(project_id: list.project.id, list_id: list.id) %>
-      <%= link_to 'Edit', edit_project_list_path(project_id: list.project.id, id: list.id) %>
-      <%= link_to 'Destroy', project_list_path(project_id: list.project.id, id: list.id), method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
   </div>
 </div>

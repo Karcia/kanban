@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = current_user.projects.create
+    @project = current_user.projects.build
   end
 
   def edit
