@@ -1,3 +1,5 @@
 <% cards.each do |card| %>
-  <%= render 'cards/show', card: card %>
+  <div id="sortable">
+    <%= render 'cards/show', card: card %>
+  </div>
 <% end %>
